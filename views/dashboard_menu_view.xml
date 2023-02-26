@@ -1,0 +1,72 @@
+<odoo>
+    <record id="dashboard_menu_kanban_view" model="ir.ui.view">
+        <field name="name">dashboard.menu.kanban.view</field>
+        <field name="model">dashboard.menu</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <h3 class="my-2 ms-3">
+                                   Name: <field name="name"/>
+                                </h3>
+                                <div class="row">
+                                <hr class="mt4 mb4"/>
+                                    <div class="col-6 text-center">
+                                        <strong>Parent: </strong>
+                                    </div>
+                                    <div class="col-6 text-center">
+                                        <field name="menu_id"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+    <record id="dashboard_menu_form_view" model="ir.ui.view">
+        <field name="name">dashboard.menu.form.view</field>
+        <field name="model">dashboard.menu</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" class="oe_inline"/>
+                            <field name="menu_id" class="oe_inline"/>
+                            <field name="group_ids" widget="many2many_tags" invisible="1"/>
+                            <field name="client_action" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_dashboard_menu_tree" model="ir.ui.view">
+        <field name="name">dashboard.menu.tree.view</field>
+        <field name="model">dashboard.menu</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="menu_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_dashboard_menu" model="ir.actions.act_window">
+        <field name="name">Dashboards</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dashboard.menu</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+    <menuitem name="Dashboards" id="menu_dynamic_dashboard_configuration" parent="dynamic_odoo_dashboard.menu_dashboard"
+              sequence="0" action="action_dashboard_menu" />
+<!--    <menuitem name="Dashboards" id="menu_dynamic_dashboard_menu" parent="dynamic_odoo_dashboard.menu_dynamic_dashboard_configuration"-->
+<!--              sequence="3" action="action_dashboard_menu"/>-->
+
+
+</odoo>

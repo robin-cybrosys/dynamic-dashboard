@@ -1,0 +1,167 @@
+<div class="ks_dashboard_item_button_container ks_dropdown_container ks_dashboard_item_header ks_dashboard_item_header_hover chart_button_container d-md-flex d-none ks_dashboard_item_menu_show">
+
+    <div class="ks_chart_inner_buttons ks_dashboard_more_action show"
+         data-item-id="2134">
+        <button title="Export Chart" data-toggle="dropdown"
+                class="export_option  btn dropdown-toggle btn-xs o-no-caret btn"
+                type="button" aria-expanded="false">
+            <i class="fa fa-ellipsis-v"></i>
+        </button>
+        <div role="menu" class="dropdown-export dropdown-menu-right"
+             x-placement="bottom-end"
+             style="position: absolute; transform: translate3d(302px, 43px, 0px); top: 0px; left: 0px; will-change: transform;">
+            <div class="ks_chart_export_menu">
+                <div class="chart_export_menu_header">
+                    <span>Export</span>
+                </div>
+                <!--                                    <div class="ks_chart_xls_csv_export ks_chart_export_menu_item" data-chart-id="2134" data-format="chart_xls">-->
+                <!--                                        <i class="fa fa-file-excel-o"></i>-->
+                <!--                                        <span>Export to Excel</span>-->
+                <!--                                    </div>-->
+                <div class="ks_chart_xls_csv_export ks_chart_export_menu_item"
+                     data-chart-id="2134" data-format="chart_csv">
+                    <i class="fa fa-file-code-o"></i>
+                    <span>Export to CSV</span>
+                </div>
+
+                <div data-chart-id="2134"
+                     class="ks_chart_pdf_export ks_chart_export_menu_item">
+                    <i class="fa fa-file-pdf-o"></i>
+                    <span>Save as PDF</span>
+                </div>
+                <a class="ks_chart_export_menu_item ks_chart_image_export"
+                   href="#" download="test.png">
+                    <i class="fa fa-file-image-o"></i>
+                    <span>Save as Image</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<a class="navbar-brand" href="#">Navbar</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+               role="button" data-toggle="dropdown" aria-haspopup="true"
+               aria-expanded="false">
+                Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search"
+               aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+        </button>
+    </form>
+</div>
+</nav>
+
+        <?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="dynamic_odoo_dashboard">
+        <div class="container">
+            <button class="btn btn-primary add_block" data-type="tile"
+                    type="button">Add Block
+            </button>
+            <button class="btn btn-primary add_block" data-type="graph"
+                    type="button">Add Graph
+            </button>
+            <div class=" o_dynamic_dashboard row">
+            </div>
+            <div style="padding-top: 100px" class="o_dynamic_chart row">
+            </div>
+        </div>
+    </t>
+    <t t-name="DynamicDashboardTile">
+        <div class="col-sm-12 col-md-12 col-lg-3 tile block"
+             t-att-data-id="widget.id">
+            <div t-att-style="widget.color+widget.text_color"
+                 class="tile-container  d-flex justify-content-around align-items-center  position-relative w-100 h-auto my-3">
+                <a t-att-style="widget.text_color"
+                   class="block_setting position-absolute tile-container__setting-icon"><i
+                        class="fa fa-cog"></i></a>
+                <div t-att-style="widget.icon_color"
+                     class="tile-container__icon-container bg-white  d-flex justify-content-center align-items-center">
+                    <i t-att-class="widget.icon"></i>
+                </div>
+                <div class="tile-container__status-container">
+                    <h2 class="status-container__title"><t t-esc="widget.name"/></h2>
+                    <div class="status-container__figures d-flex flex-wrap align-items-baseline">
+                        <h3 class="mb-0 mb-md-1 mb-lg-0 mr-1"><t t-esc="widget.value"/></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+    <t t-name="DynamicDashboardChart">
+        <head>
+            <meta charset="UTF-8"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+            <meta name="viewport"
+                  content="width=device-width, initial-scale=1.0"/>
+            <title>Dashboard</title>
+            <link rel="stylesheet"
+                  href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
+                  integrity="sha512-P5MgMn1jBN01asBgU0z60Qk4QxiXo86+wlFahKrsQf37c9cro517WzVSPPV1tDKzhku2iJ2FVgL67wG03SGnNA=="
+                  crossorigin="anonymous"/>
+        </head>
+        <div style="padding-bottom:30px"
+             t-att-class="widget.cols +' col-4 block'"
+             t-att-data-id="widget.id">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col">
+                                    <h3><t t-esc="widget.name"/></h3>
+                            </div>
+                            <div class="col">
+                                <div style="float:right;"><i title="Configuration" class="fa fa-cog block_setting fa-2x"/></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body mt-3" id="in_ex_body_hide">
+                        <div class="row">
+                            <div class="col-md-12 chart_canvas">
+                                <div id="chart_canvas">
+                                    <canvas class="chart_graphs" width="300"
+                                            height="200"> </canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+
+</templates>
